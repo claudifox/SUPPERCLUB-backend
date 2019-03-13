@@ -1,4 +1,5 @@
 class Api::V1::SuppersController < ApplicationController
+  before_action :find_supper, only: [:update, :delete]
 
   def index
     @suppers = Supper.all
@@ -17,7 +18,6 @@ class Api::V1::SuppersController < ApplicationController
   # QUESTION: Need to confirm how to find_by both params, so not just one
 
   def update
-    @supper = Supper.find_by(name: params[:name], user_id: params[:user_id])
     if @supper.update_attributes(supper_params)
       flash[:success] = "Supper updated"
       render json: @supper
@@ -27,7 +27,6 @@ class Api::V1::SuppersController < ApplicationController
   end
 
   def delete
-    @supper = Supper.find_by(name: params[:name], user_id: params[:user_id])
     @supper.destroy
   end
 
@@ -35,8 +34,12 @@ class Api::V1::SuppersController < ApplicationController
 
 private
 
-def supper_params
-  params.permit(:name, :description, :date, :time, :picture, :address, :city, :postcode, :user_id)
-end
+  def supper_params
+    params.permit(:name, :description, :date, :time, :picture, :address, :city, :postcode, :user_id)
+  end
+
+  def find_supper
+    @supper = Supper.find_by(name: params[:name], user_id: params[:user_id])
+  end
 
 end

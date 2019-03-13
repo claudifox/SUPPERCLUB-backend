@@ -9,4 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'login', to: 'users#login'
+  get 'validate', to: 'users#validate'
+
 end

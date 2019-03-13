@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_111855) do
     t.string "first_name"
     t.string "last_name"
     t.string "email_address"
-    t.date "date_of_birth"
+    t.string "password_digest"
     t.string "profile_picture"
     t.text "description"
     t.datetime "created_at", null: false

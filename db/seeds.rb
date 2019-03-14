@@ -33,3 +33,45 @@ users = User.create([
     description: "I'm Issy, 18 and studying to become a nurse. Love Sunday Lunches and funny people!"
   },
   ])
+
+  suppers = Supper.create([
+    {
+      name: "St Patricks Day Themed Party",
+      picture: "https://celebrationsathomeblog.com/wp-content/uploads/2017/03/irish-themed-dinner-party-tablescape-party-ideas.jpg",
+      description: "A fun-filled evening full of Guinness and Leprechaun's.",
+      dateTime: DateTime.new(2019,03,17,19,30),
+      address: "",
+      city: "London",
+      postcode: "SW11 1RU",
+      user_id: 1
+    },
+    {
+      name: "Mexican Fiesta",
+      picture: "https://farm9.staticflickr.com/8717/16684964243_91ff7162d7_o.jpg",
+      description: "Tacos, Fajitas, Margaritas and great company! ",
+      dateTime: DateTime.new(2019,04,01,20,30),
+      address: "73 City Rd",
+      city: "London",
+      postcode: "EC1Y 1BD",
+      user_id: 3
+    },
+    ])
+
+    bookings = Booking.create([
+      {
+        user_id: 2,
+        supper_id: 1
+      },
+      {
+        user_id: 2,
+        supper_id: 2
+      },
+      {
+        user_id: 1,
+        supper_id: 2 
+      },
+      {
+        user_id: 3,
+        supper_id: 1
+      },
+      ])

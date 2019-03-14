@@ -4,8 +4,7 @@ class CreateSuppers < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.string :picture
-      t.date :date
-      t.time :time
+      t.datetime :dateTime
       t.string :address
       t.string :city
       t.string :postcode

@@ -2,7 +2,7 @@ class Api::V1::SuppersController < ApplicationController
   before_action :find_supper, only: [:update, :delete]
 
   def index
-    @suppers = Supper.all
+    @suppers = Supper.where(user_id: params[:user_id])
     render json: @suppers
   end
 

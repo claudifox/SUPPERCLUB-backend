@@ -1,4 +1,4 @@
-class Api::V1::SuppersController < ApplicationController
+class SuppersController < ApplicationController
   before_action :find_supper, only: [:update, :delete]
 
   def index

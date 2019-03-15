@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class UsersController < ApplicationController
   before_action :find_user, only: [:update, :delete]
 
   def index
@@ -18,14 +18,20 @@ class Api::V1::UsersController < ApplicationController
   def validate
     @user = get_current_user
     if @user
-      render json: {email_address: @user.email_address, token: issue_token({id: @user.id}), first_name: @user.first_name, last_name: @user.last_name, user_id: @user.id}
+      render json: {email_address: @user.email_address, token: issue_token({id: @user.id}), user_id: @user.id, first_name: @user.first_name, last_name: @user.last_name, profile_picture: @user.profile_picture, description: @user.description }
     else
       render json: {error: "Your email address or password is incorrect"}, status: 401
     end
   end
 
+  def user_info
+    @user = get_current_user
+    render json: {email_address: @user.email_address, first_name: @user.first_name, last_name: @user.last_name, profile_picture: @user.profile_picture, description: @user.description }
+  end
+
+
   def create
-  @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email_address: params[:email_address], date_of_birth: params[:date_of_birth], profile_picture: params[:profile_picture], description: params[:description])
+  @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email_address: params[:email_address], profile_picture: params[:profile_picture], description: params[:description])
     if @user.save
       render json: @user
     else
@@ -50,7 +56,7 @@ class Api::V1::UsersController < ApplicationController
 private
 
   def user_params
-    params.permit(:first_name, :last_name, :email_address, :date_of_birth, :profile_picture, :description)
+    params.permit(:first_name, :last_name, :email_address, :profile_picture, :description)
   end
 
   def find_user

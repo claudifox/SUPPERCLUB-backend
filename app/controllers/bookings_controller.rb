@@ -1,4 +1,4 @@
-class Api::V1::BookingsController < ApplicationController
+class BookingsController < ApplicationController
   before_action :find_booking, only: [:update, :delete]
 
   def index

@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_111855) do
     t.string "picture"
     t.datetime "dateTime"
     t.string "address"
-    t.string "city"
-    t.string "postcode"
+    t.string "latLng"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

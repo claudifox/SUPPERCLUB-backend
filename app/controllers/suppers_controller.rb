@@ -7,15 +7,13 @@ class SuppersController < ApplicationController
   end
 
   def create
-  @supper = Supper.new(name: params[:name], description: params[:description], date: params[:date], time: params[:time], picture: params[:picture], address: params[:address], city: params[:city], postcode: params[:postcode], user_id: params[:user_id])
+  @supper = Supper.new(name: params[:name], description: params[:description], date: params[:date], time: params[:time], picture: params[:picture], address: params[:address], latLng: params[:latLng], user_id: params[:user_id])
     if @supper.save
       render json: @supper
     else
       render json: {error: "Unable to create supper"}, status: 400
     end
   end
-
-  # QUESTION: Need to confirm how to find_by both params, so not just one
 
   def update
     if @supper.update_attributes(supper_params)
@@ -30,12 +28,10 @@ class SuppersController < ApplicationController
     @supper.destroy
   end
 
-
-
 private
 
   def supper_params
-    params.permit(:name, :description, :date, :time, :picture, :address, :city, :postcode, :user_id)
+    params.permit(:name, :description, :date, :time, :picture, :address, :latLng, :user_id)
   end
 
   def find_supper

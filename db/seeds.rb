@@ -39,20 +39,20 @@ users = User.create([
       name: "St Patricks Day Themed Party",
       picture: "https://celebrationsathomeblog.com/wp-content/uploads/2017/03/irish-themed-dinner-party-tablescape-party-ideas.jpg",
       description: "A fun-filled evening full of Guinness and Leprechaun's.",
-      dateTime: DateTime.new(2019,03,17,19,30),
-      address: "",
-      city: "London",
-      postcode: "SW11 1RU",
+      date: "2019-03-22",
+      time: "19:30",
+      address: "St. John's Hill, London, SW11 1RU",
+      latLng: "{51,4637, 0.1681}",
       user_id: 1
     },
     {
       name: "Mexican Fiesta",
       picture: "https://farm9.staticflickr.com/8717/16684964243_91ff7162d7_o.jpg",
       description: "Tacos, Fajitas, Margaritas and great company! ",
-      dateTime: DateTime.new(2019,04,01,20,30),
-      address: "73 City Rd",
-      city: "London",
-      postcode: "EC1Y 1BD",
+      date: "2019-03-22",
+      time: "19:30",
+      address: "73 City Rd, London, EC1Y 1BD",
+      latLng: "{51,5249, 0.0874}",
       user_id: 3
     },
     ])
@@ -68,7 +68,7 @@ users = User.create([
       },
       {
         user_id: 1,
-        supper_id: 2 
+        supper_id: 2
       },
       {
         user_id: 3,

@@ -3,5 +3,5 @@ class User < ApplicationRecord
   validates :email_address, uniqueness: {case_sensitive: true}
   has_many :hosted_suppers, class_name: "Supper"
   has_many :bookings
-  has_many :attended_suppers, class_name: "Supper", through: :bookings
+  has_many :attended_suppers, class_name: "Supper", through: :bookings, source: :supper
 end

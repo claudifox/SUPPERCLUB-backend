@@ -29,6 +29,24 @@ class UsersController < ApplicationController
     render json: {email_address: @user.email_address, first_name: @user.first_name, last_name: @user.last_name, profile_picture: @user.profile_picture, description: @user.description }
   end
 
+  def get_hosted_suppers
+    @user = get_current_user
+    if @user
+      render json: @user.hosted_suppers
+    else
+      render json: {error: "Not a valid user"}, status: 401
+    end
+  end
+
+  def get_attended_suppers
+    @user = get_current_user
+    if @user
+      render json: @user.attended_suppers
+    else
+      render json: {error: "Not a valid user"}, status: 401
+    end
+  end
+
 
   def create
   @user = User.new(first_name: params[:first_name], last_name: params[:last_name], email_address: params[:email_address], profile_picture: params[:profile_picture], description: params[:description])

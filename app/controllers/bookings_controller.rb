@@ -2,11 +2,13 @@ class BookingsController < ApplicationController
   before_action :find_booking, only: [:update, :delete]
 
   def index
+    @user = get_current_user
+    user_id = @user.user_id
     @bookings = Booking.where(user_id: params[:user_id])
     render json: @bookings
   end
 
-  def create
+  def create_attended_supper
     @booking = Booking.new(user_id: params[:user_id], supper_id: params[:supper_id])
     if @booking.save
       render json: @booking
@@ -31,7 +33,8 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.permit(:user_id, :supper_id)
+    @user = get_current_user
+    params.permit(@user.user_id, :supper_id)
   end
 
   def find_booking

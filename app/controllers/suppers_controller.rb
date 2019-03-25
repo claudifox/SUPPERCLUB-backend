@@ -2,12 +2,13 @@ class SuppersController < ApplicationController
   before_action :find_supper, only: [:update, :delete]
 
   def index
-    @suppers = Supper.where(user_id: params[:user_id])
+    # @user = get_current_user
+    @suppers = Supper.all
     render json: @suppers
   end
 
-  def create
-  @supper = Supper.new(name: params[:name], description: params[:description], date: params[:date], time: params[:time], picture: params[:picture], address: params[:address], latLng: params[:latLng], user_id: params[:user_id])
+  def create_new_supper
+  @supper = Supper.new(name: params[:name], description: params[:description], date: params[:date], time: params[:time], picture: params[:picture], address: params[:address], lat: params[:lat], lng: params[:lng], user_id: params[:user_id])
     if @supper.save
       render json: @supper
     else
@@ -31,11 +32,12 @@ class SuppersController < ApplicationController
 private
 
   def supper_params
-    params.permit(:name, :description, :date, :time, :picture, :address, :latLng, :user_id)
+    params.permit(:name, :description, :date, :time, :picture, :address, :lat, :lng, :user_id)
   end
 
   def find_supper
-    @supper = Supper.find_by(name: params[:name], user_id: params[:user_id])
+    @user = get_current_user
+    @supper = Supper.find_by(name: params[:name], user_id: params[@user.user_id])
   end
 
 end

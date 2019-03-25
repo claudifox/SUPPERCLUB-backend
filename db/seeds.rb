@@ -42,8 +42,9 @@ users = User.create([
       date: "2019-03-22",
       time: "19:30",
       address: "St. John's Hill, London, SW11 1RU",
-      latLng: "{51,4637, 0.1681}",
-      user_id: 1
+      lat: 51.4637,
+      lng: 0.1681,
+      user_id: 4
     },
     {
       name: "Mexican Fiesta",
@@ -52,26 +53,27 @@ users = User.create([
       date: "2019-03-22",
       time: "19:30",
       address: "73 City Rd, London, EC1Y 1BD",
-      latLng: "{51,5249, 0.0874}",
-      user_id: 3
+      lat: 51.5249,
+      lng: 0.0874,
+      user_id: 6
     },
     ])
 
     bookings = Booking.create([
       {
-        user_id: 2,
+        user_id: 5,
         supper_id: 1
       },
       {
-        user_id: 2,
+        user_id: 4,
         supper_id: 2
       },
       {
-        user_id: 1,
+        user_id: 5,
         supper_id: 2
       },
       {
-        user_id: 3,
+        user_id: 6,
         supper_id: 1
       },
       ])

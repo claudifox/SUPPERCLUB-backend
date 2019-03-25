@@ -7,9 +7,10 @@ Rails.application.routes.draw do
     get 'attended_suppers', to: 'users#get_attended_suppers'
     get 'user_info', to: 'users#user_info'
     post 'attended_suppers', to: 'bookings#create_attended_supper'
+    delete 'attended_suppers', to: 'bookings#delete_attended_supper'
   end
 
-  resources :bookings, only: [:index, :update, :destroy]
+  resources :bookings, only: [:index, :update]
   resources :suppers, only: [:index, :update, :destroy]
 
   post 'login', to: 'users#login'

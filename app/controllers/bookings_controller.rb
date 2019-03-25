@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:update, :delete]
+  before_action :find_booking, only: [:update, :delete_attended_supper]
 
   def index
     @user = get_current_user
@@ -17,6 +17,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def delete_attended_supper
+    @booking.destroy
+  end
+
   def update
     if @booking.update_attributes(booking_params)
       flash[:success] = "Booking updated"
@@ -26,9 +30,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def delete
-    @booking.destroy
-  end
 
   private
 

@@ -31,7 +31,6 @@ class UsersController < ApplicationController
 
   def get_hosted_suppers
     @user = get_current_user
-    # byebug
     if @user
       render json: @user.hosted_suppers
     else
